@@ -7,14 +7,14 @@ import { NgModule } from '@angular/core';
 // AppComponent es el componente principal de Angular
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArticulosComponent } from './articulos/articulos.component';
-import { FormularioComponent } from './formulario/formulario.component';
-import { GaleriaComponent } from './galeria/galeria.component';
-import { HeaderComponent } from './header/header.component';
-import { MouseComponent } from './mouse/mouse.component';
-import { SlideshowComponent } from './slideshow/slideshow.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { ArticuloComponent } from './articulo/articulo.component';
+import { ArticulosComponent } from './pages/inicio/articulos/articulos.component';
+import { FormularioComponent } from './pages/inicio/formulario/formulario.component';
+import { GaleriaComponent } from './pages/inicio/galeria/galeria.component';
+import { HeaderComponent } from './pages/inicio/header/header.component';
+import { MouseComponent } from './pages/inicio/mouse/mouse.component';
+import { SlideshowComponent } from './pages/inicio/slideshow/slideshow.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { ArticuloComponent } from './pages/articulo/articulo.component';
 
 //Los decoradores son funciones que modifican clases de javascript
 @NgModule({
