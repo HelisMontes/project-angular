@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 //Importa la clase NgModule es el módulo raiz de Angular.
 import { NgModule } from '@angular/core';
 
+// Modulo para hacer peticiones HTTP
+import { HttpClientModule } from '@angular/common/http'
+
 // AppComponent es el componente principal de Angular
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +18,7 @@ import { MouseComponent } from './pages/inicio/mouse/mouse.component';
 import { SlideshowComponent } from './pages/inicio/slideshow/slideshow.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { ArticuloComponent } from './pages/articulo/articulo.component';
+import { from } from 'rxjs';
 
 //Los decoradores son funciones que modifican clases de javascript
 @NgModule({
@@ -36,7 +40,8 @@ import { ArticuloComponent } from './pages/articulo/articulo.component';
   // de componentes declaradas en este módulo
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
 
    // Los proveedores son los creadores de servicios que este módulo contribuye a la recolección 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SlideshowService } from '../../../services/slideshow.service';
+import { from } from 'rxjs';
 declare var jQuery:any;
 declare var $:any;
 
@@ -9,7 +11,18 @@ declare var $:any;
 })
 export class SlideshowComponent implements OnInit {
 
-  constructor() { }
+  constructor(private slideshowService: SlideshowService) { 
+    /*=============================================
+    RECIBIENDO DATOS DINAMICOS
+    =============================================*/
+
+    this.slideshowService.getSlideshow()
+    //subscribe trae la respuesta de la peticion
+    .subscribe(respuesta => {
+      console.log("Respuesta", respuesta)
+    })
+
+  }
 
   ngOnInit(): void {
     /*=============================================
