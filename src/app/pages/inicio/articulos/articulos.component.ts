@@ -7,14 +7,14 @@ import { ArticulosService } from '../../../services/articulos.service';
   styleUrls: ['./articulos.component.css']
 })
 export class ArticulosComponent implements OnInit {
-
+  public resJSON: any
   constructor(private articulosService: ArticulosService) {
     /*=============================================
     RECIBIENDO DATOS DINAMICOS
     =============================================*/
     this.articulosService.getArticulo()
     .subscribe(res =>{
-      console.log("Resultado de Articulos ", res)
+      this.resJSON = res;
     })
   }
 

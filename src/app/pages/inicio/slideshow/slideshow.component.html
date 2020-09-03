@@ -9,33 +9,13 @@
         <div class="slide-inner">
 
             <ul class="slide-area">
-                <li>
+                <li *ngFor="let rs of resJSON; let ultimoIndice = last">
                     <div class="slide-text d-none d-lg-block">
-                        <h3>Lorem ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <h3>{{rs.titulo}}</h3>
+                        <p>{{rs.descripcion}}</p>
                     </div>
-                    <img src="assets/img/slide/slide01.jpg">
-                </li>
-                <li>
-                    <div class="slide-text d-none d-lg-block">
-                        <h3>Lorem ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <img src="assets/img/slide/slide02.jpg">
-                </li>
-                <li>
-                    <div class="slide-text d-none d-lg-block">
-                        <h3>Lorem ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <img src="assets/img/slide/slide03.jpg">
-                </li>
-                <li>
-                    <div class="slide-text d-none d-lg-block">
-                        <h3>Lorem ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    </div>
-                    <img src="assets/img/slide/slide04.jpg">
+                    <img src="{{rs.imagen}}">
+                    {{ultimoIndice ? callback() : "" }}
                 </li>
             </ul>
         </div>

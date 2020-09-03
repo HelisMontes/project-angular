@@ -9,40 +9,48 @@ declare var $:any;
   styleUrls: ['./galeria.component.css']
 })
 export class GaleriaComponent implements OnInit {
-
+  public rsJSON: any; 
+  public rendergaleria: boolean = true;
   constructor(private galeriaService: GaleriaService) { 
     /*=============================================
     RECIBIENDO DATOS DINAMICOS
     =============================================*/
     this.galeriaService.getGaleria()
     .subscribe(res => {
-      console.log("Resulatdo Galeria", res)
+      this.rsJSON =  res
     })
   }
 
   ngOnInit(): void {
-    /*=============================================
-    PINTEREST GRID
-    =============================================*/
+    
+  }
 
-    $('.pinterest_grid').pinterest_grid({
-      no_columns: 4, //Número de columnas
-      padding_x: 10, //Márgenes internas horizontal
-      padding_y: 10, //Márgenes internas vertical
-      margin_bottom: 50, //Márgen externa inferor
-      single_column_breakpoint: 769 //Punto de quiebre para una sola columna
-    });
+  callback(){
+    if ( this.rendergaleria ) {
+      this.rendergaleria = false;
+      /*=============================================
+      PINTEREST GRID
+      =============================================*/
 
-    /*=============================================
-    EKKO LIGHTBOX
-    =============================================*/
+      $('.pinterest_grid').pinterest_grid({
+        no_columns: 4, //Número de columnas
+        padding_x: 10, //Márgenes internas horizontal
+        padding_y: 10, //Márgenes internas vertical
+        margin_bottom: 50, //Márgen externa inferor
+        single_column_breakpoint: 769 //Punto de quiebre para una sola columna
+      });
 
-    $(document).on("click", "[data-toggle='lightbox']", function(e){
+      /*=============================================
+      EKKO LIGHTBOX
+      =============================================*/
 
-      e.preventDefault(); //Quitar eventos que vengan por defecto en el navegador
-      $(this).ekkoLightbox(); //Activar la acción del plugin Ekko Lightbox
+      $(document).on("click", "[data-toggle='lightbox']", function(e){
 
-    })
+        e.preventDefault(); //Quitar eventos que vengan por defecto en el navegador
+        $(this).ekkoLightbox(); //Activar la acción del plugin Ekko Lightbox
+
+      })
+    }
   }
 
 }
