@@ -19,7 +19,7 @@ export class ArticuloComponent implements OnInit {
     .subscribe(res => {
       this.articuloJSON = res;
       this.resJSON = this.articuloJSON.find(result => {
-        return result.id == activatedRoute.snapshot.params["id"]; //activatedRoute.snapshot.params["id"] de esta manera es que se reciben los datos por URL
+        return result.url == activatedRoute.snapshot.params["id"]; //activatedRoute.snapshot.params["id"] de esta manera es que se reciben los datos por URL
       })
       this.contenidoArticulo = this.resJSON.contenido;
     })
