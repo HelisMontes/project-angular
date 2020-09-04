@@ -27,9 +27,9 @@ Formulario de ingreso
 
 		</div>
 
-		<div class="alert alert-danger">Usuario y contraseña no válidos</div>
+		<div *ngIf="!validarLogin" class="alert alert-danger">Usuario y contraseña no válidos</div>
 
-		<button class="btn btn-lg btn-primary btn-block mt-3">Ingresar</button>		
+		<button [disabled]="!f.valid" class="btn btn-lg btn-primary btn-block mt-3">Ingresar</button>		
 
 	</form>
 

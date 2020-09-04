@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../services/articulos.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 //Esto es la clase que se necesita para navegar entre páginas
 import { ActivatedRoute } from '@angular/router';
@@ -20,8 +21,11 @@ export class ArticuloComponent implements OnInit {
   public login:boolean=false;
   public usuario:string;
   public password: string;
+  public usuarioJSON:any;
+  public resUsuario: any;
+  public validarLogin:boolean=true
 
-  constructor(activatedRoute: ActivatedRoute, private http: ArticulosService ) { 
+  constructor(activatedRoute: ActivatedRoute, private http: ArticulosService, private usuariosService: UsuariosService ) { 
     this.http.getArticulo()
     .subscribe(res => {
       this.articuloJSON = res;
@@ -31,7 +35,6 @@ export class ArticuloComponent implements OnInit {
       this.contenidoArticulo = this.resJSON.contenido;
     })
     
-    
   }
 
   ngOnInit(): void {
@@ -39,6 +42,18 @@ export class ArticuloComponent implements OnInit {
 
   onSubmit(f: NgForm){
     console.log("usuario ",this.usuario, "password ", this.password)
+    this.usuariosService.getUsuarios()
+    .subscribe(result =>{
+      this.usuarioJSON = result;
+      this.resUsuario = this.usuarioJSON.find(res => {
+        if(res.usuario == this.usuario && res.password == this.password){
+          return true
+        }else{
+          false
+        }
+      })
+      this.resUsuario ? this.login=true : this.validarLogin=false
+    })
   }
 
 }
