@@ -10,9 +10,11 @@ Formulario de ingreso
 
 		<div class="form-group">
 			
-			<input type="text" class="form-control mt-3" placeholder="Usuario" name="usuarioLogin" [(ngModel)]="usuario" required>
+			<input type="text" class="form-control mt-3" placeholder="Usuario" name="usuarioLogin" [(ngModel)]="usuario" pattern="(?=.*[A-Za-z]).{2,10}" #usuarioLogin="ngModel" required>
 
-			<div class="invalid-feedback">Este campo es obligatorio</div>
+			<div *ngIf="!usuarioLogin.valid && usuarioLogin.touched" class="invalid-feedback">Error en el campo de usuario</div>
+
+			<div *ngIf="usuarioLogin.errors?.required && usuarioLogin.touched" class="invalid-feedback">Este campo es obligatorio</div>
 
 		</div>
 
@@ -20,7 +22,8 @@ Formulario de ingreso
 			
 			<input type="password" class="form-control mt-3" placeholder="Contraseña" name="passwordLogin" [(ngModel)]="password" #passwordLogin="ngModel" required>
 			
-			<div class="invalid-feedback">Este campo es obligatorio</div>
+			<div *ngIf="passwordLogin.errors?.required && passwordLogin.touched" class="invalid-feedback">Este campo es obligatorio</div>
+
 
 		</div>
 
