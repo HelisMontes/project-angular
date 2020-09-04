@@ -7,8 +7,14 @@ import { NgModule } from '@angular/core';
 // Modulo para hacer peticiones HTTP
 import { HttpClientModule } from '@angular/common/http'
 
-// AppComponent es el componente principal de Angular
+//Importamos los módulos de ruta
 import { AppRoutingModule } from './app-routing.module';
+
+//Importamos los módulos para trabajar con formularios en Angular
+import { FormsModule } from "@angular/forms";
+
+
+// AppComponent es el componente principal de Angular
 import { AppComponent } from './app.component';
 import { ArticulosComponent } from './pages/inicio/articulos/articulos.component';
 import { FormularioComponent } from './pages/inicio/formulario/formulario.component';
@@ -41,7 +47,8 @@ import { from } from 'rxjs';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
 
    // Los proveedores son los creadores de servicios que este módulo contribuye a la recolección 

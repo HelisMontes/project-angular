@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from '../../services/articulos.service';
 
-//Esto es la clase que se necestia para navegar entre páginas
+//Esto es la clase que se necesita para navegar entre páginas
 import { ActivatedRoute } from '@angular/router';
+
+//Esto es la clase que se necesita para trabajar con formularios
+import { NgForm } from "@angular/forms";
+
 
 @Component({
   selector: 'app-articulo',
@@ -13,6 +17,9 @@ export class ArticuloComponent implements OnInit {
   public articuloJSON:any;
   public resJSON:any;
   public contenidoArticulo:any;
+  public login:boolean=false;
+  public usuario:string;
+  public password: string;
 
   constructor(activatedRoute: ActivatedRoute, private http: ArticulosService ) { 
     this.http.getArticulo()
@@ -28,6 +35,10 @@ export class ArticuloComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(f: NgForm){
+    console.log("usuario ",this.usuario, "password ", this.password)
   }
 
 }
